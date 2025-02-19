@@ -5,7 +5,7 @@ class Pistola(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicio
 
     init{
 
-        this.municionARestar = municion * 1
+        this.municionARestar = 1
 
         require(this.danio in 0..6){"El daño debe ser entre 1 y 5"}
 
@@ -21,7 +21,4 @@ class Pistola(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicio
         super.recarga()
     }
 
-    override fun mostrarInfo() {
-        super.mostrarInfo()
-    }
 }

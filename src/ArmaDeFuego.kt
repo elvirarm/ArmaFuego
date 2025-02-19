@@ -8,39 +8,48 @@ abstract class ArmaDeFuego (protected val nombre: String, protected var municion
 
     open fun dispara() {
 
-        municion -= municionARestar
-        println("Se ha disparado $nombre, queda $municion")
+
         if (municion < municionARestar) {
             recarga()
-            dispara()
+        }
+
+        if (municion < municionARestar) {
+            println("No se puede disparar")
+        }else {
+            municion -= municionARestar
+            println("Se ha disparado $nombre, le quedan $municion balas al arma y $cantidadMunicionExtra en la caja de munición")
         }
     }
 
     open fun recarga(){
 
+        val mensajeRecarga = "Se ha recargado $nombre, le quedan $municion balas al arma y $cantidadMunicionExtra en la caja de munición"
+
         if (cantidadMunicionExtra >= municionARestar * 2) {
             municion += municionARestar * 2
-            cantidadMunicionExtra -= municion
-            println("Se ha recargado $nombre, queda $municion")
+            cantidadMunicionExtra -= municionARestar * 2
+            println(mensajeRecarga)
 
         }else if (cantidadMunicionExtra >= municionARestar){
             municion += municionARestar
-            cantidadMunicionExtra -= municion
-            println("Se ha recargado $nombre, queda $municion")
+            cantidadMunicionExtra -= municionARestar
+            println(mensajeRecarga)
 
-
-        }else{
-            println("No hay suficiente munición extra para recargar.")
+        }else if (cantidadMunicionExtra + municion >= municionARestar) {
+            municion += cantidadMunicionExtra
+            cantidadMunicionExtra = 0
+            println(mensajeRecarga)
+        }
+        else{
+            println("No hay suficiente munición extra para recargar. Quedan $cantidadMunicionExtra")
         }
 
     }
 
-
-
-    open fun mostrarInfo()
-    {
-        println("Nombre: $nombre, Munición: $municion, Tipo de Munición: $tipoDeMunicion, Daño: $danio, Radio: $radio)")
+    override fun toString(): String {
+        return "Nombre: $nombre, Munición: $municion, Tipo de Munición: $tipoDeMunicion, Daño: $danio, Radio: $radio)"
     }
+
 
 
 }

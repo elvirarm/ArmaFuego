@@ -6,14 +6,34 @@ fun main() {
     val rifle = Rifle("Rifle de ejemplo", 20, 15, TipoMunicion.CalibreMM7_62, 9, Radio.Intermedio)
 
 
-    val bazooka = Bazooka("Bazooka de ejemplo", 20, 23, TipoMunicion.RPG, 22, Radio.Amplio)
+    val bazooka = Bazooka("Bazooka de ejemplo", 3, 2, TipoMunicion.RPG, 10, Radio.Enorme)
 
-    var listaArmas: MutableList<ArmaDeFuego> = mutableListOf(pistola, rifle, bazooka)
+    val listaArmas: MutableList<ArmaDeFuego> = mutableListOf(pistola, rifle, bazooka)
 
     println("\nMunición extra = ${ArmaDeFuego.cantidadMunicionExtra}... para todas las armas de fuego.\n")
 
 
+    fun generarMapa(listaArmas: MutableList<ArmaDeFuego>): MutableMap<Int, ArmaDeFuego>{
 
+        val mapaDisparos = mutableMapOf<Int, ArmaDeFuego>()
 
+        for (i in 1..12){
+            mapaDisparos[i] = listaArmas.random()
+        }
 
-}
+        return mapaDisparos
+    }
+
+    fun recorrerDisparos(mapaDisparos: MutableMap<Int, ArmaDeFuego>){
+        for (arma in mapaDisparos.values){
+            println(arma)
+            arma.dispara()
+            println("---------------------------------------------------------")
+        }
+
+        }
+
+    val mapaDisparos = generarMapa(listaArmas)
+
+    recorrerDisparos(mapaDisparos)
+    }
