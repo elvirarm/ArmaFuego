@@ -1,12 +1,12 @@
 import kotlin.random.Random
 
-abstract class ArmaDeFuego (protected val nombre: String, protected var municion: Int, protected var municionARestar: Int, protected val tipoDeMunicion: TipoMunicion, val danio: Int, val radio: Radio) {
+abstract class ArmaDeFuego (protected val nombre: String, protected var municion: Int, protected var municionARestar: Int, protected val tipoDeMunicion: TipoMunicion, val danio: Int, val radio: Radio): dispara {
 
     companion object{
         var cantidadMunicionExtra: Int = Random.nextInt(5, 16)
     }
 
-    open fun dispara() {
+    override fun dispara() {
 
 
         if (municion < municionARestar) {

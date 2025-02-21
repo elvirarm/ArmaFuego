@@ -1,9 +1,8 @@
-class Rifle(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicion: TipoMunicion, danio: Int, radio : Radio) :ArmaDeFuego(nombre, municion, municionARestar, tipoDeMunicion, danio, radio) {
+class Rifle(nombre: String = "Rifle", municion: Int, municionARestar: Int = 2, tipoDeMunicion: TipoMunicion, danio: Int, radio : Radio) :ArmaDeFuego(nombre, municion, municionARestar, tipoDeMunicion, danio, radio) {
 
 
     init{
 
-        this.municionARestar = 2
 
         require(this.danio in 5..11){"El daño debe ser entre 5 y 10"}
 

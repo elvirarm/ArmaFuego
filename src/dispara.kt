@@ -1,0 +1,6 @@
+interface dispara {
+
+    fun dispara()
+
+
+}
